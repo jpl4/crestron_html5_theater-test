@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Theater Control</title>
+    <!-- Link to our stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Link to Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="panel-container">
+
+        <!-- Top Bar -->
+        <header class="top-bar">
+            <div id="time-display" class="time">--:-- --</div>
+            <div class="spacer"></div>
+            <!-- Power button - shown on source pages -->
+            <button id="power-button" class="icon-button power-btn" style="display: none;">
+                <i class="fas fa-power-off"></i>
+            </button>
+        </header>
+
+        <!-- Main Content Area (Pages) -->
+        <main class="content-area">
+            <!-- Home Page -->
+            <div id="home-page" class="page active">
+                <div class="source-selector">
+                     <button class="source-button" data-page="appletv-page">
+                        <i class="fab fa-apple"></i>
+                        <span>Apple TV</span>
+                    </button>
+                    <button class="source-button" data-page="bluray-page">
+                        <i class="fas fa-compact-disc"></i>
+                        <span>Blu-ray</span>
+                    </button>
+                    <button class="source-button" data-page="cinema-page">
+                        <i class="fas fa-film"></i>
+                        <span>Digital Cinema</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Apple TV Page -->
+            <div id="appletv-page" class="page">
+                 <div class="controls-section">
+                    <h2>Apple TV</h2>
+                    <div class="menu-controls">
+                        <button class="icon-button" id="atv-menu"><i class="fas fa-bars"></i></button>
+                         <button class="icon-button" id="atv-tv-home"><i class="fas fa-tv"></i></button>
+                        <button class="icon-button" id="atv-back"><i class="fas fa-arrow-left"></i></button>
+                    </div>
+                    <div class="dpad-container">
+                        <button class="icon-button dpad-up" id="atv-up"><i class="fas fa-chevron-up"></i></button>
+                        <button class="icon-button dpad-left" id="atv-left"><i class="fas fa-chevron-left"></i></button>
+                        <button class="icon-button dpad-select" id="atv-select">OK</button>
+                        <button class="icon-button dpad-right" id="atv-right"><i class="fas fa-chevron-right"></i></button>
+                        <button class="icon-button dpad-down" id="atv-down"><i class="fas fa-chevron-down"></i></button>
+                    </div>
+                    <div class="transport-controls">
+                        <button class="icon-button" id="atv-playpause"><i class="fas fa-play"></i>/<i class="fas fa-pause"></i></button>
+                         <button class="icon-button" id="atv-mic"><i class="fas fa-microphone"></i></button>
+                    </div>
+                    <div class="control-group-separator"></div>
+                    <button class="back-button" data-page="home-page">Back to Home</button>
+                </div>
+            </div>
+
+            <!-- Blu-ray Page -->
+            <div id="bluray-page" class="page">
+                  <div class="controls-section">
+                    <h2>Blu-ray</h2>
+                    <div class="menu-controls">
+                        <button class="icon-button" id="bd-top-menu">Top Menu</button>
+                        <button class="icon-button" id="bd-popup-menu"><i class="fas fa-layer-group"></i></button>
+                         <button class="icon-button" id="bd-back"><i class="fas fa-arrow-left"></i></button>
+                        <button class="icon-button eject-button" id="bd-eject"><i class="fas fa-eject"></i></button>
+                    </div>
+                    <div class="dpad-container">
+                        <button class="icon-button dpad-up" id="bd-up"><i class="fas fa-chevron-up"></i></button>
+                        <button class="icon-button dpad-left" id="bd-left"><i class="fas fa-chevron-left"></i></button>
+                        <button class="icon-button dpad-select" id="bd-enter">Enter</button>
+                        <button class="icon-button dpad-right" id="bd-right"><i class="fas fa-chevron-right"></i></button>
+                        <button class="icon-button dpad-down" id="bd-down"><i class="fas fa-chevron-down"></i></button>
+                    </div>
+                    <div class="transport-controls">
+                        <button class="icon-button" id="bd-skip-rev"><i class="fas fa-step-backward"></i></button>
+                        <button class="icon-button" id="bd-rewind"><i class="fas fa-backward"></i></button>
+                        <button class="icon-button" id="bd-play"><i class="fas fa-play"></i></button>
+                        <button class="icon-button" id="bd-pause"><i class="fas fa-pause"></i></button>
+                        <button class="icon-button" id="bd-stop"><i class="fas fa-stop"></i></button>
+                        <button class="icon-button" id="bd-forward"><i class="fas fa-forward"></i></button>
+                        <button class="icon-button" id="bd-skip-fwd"><i class="fas fa-step-forward"></i></button>
+                    </div>
+                     <div class="menu-controls">
+                         <button class="icon-button" id="bd-info">Info</button>
+                         <button class="icon-button" id="bd-audio"><i class="fas fa-headphones"></i></button>
+                         <button class="icon-button" id="bd-subtitle"><i class="far fa-closed-captioning"></i></button>
+                     </div>
+                    <div class="control-group-separator"></div>
+                    <button class="back-button" data-page="home-page">Back to Home</button>
+                </div>
+            </div>
+
+            <!-- Digital Cinema Page -->
+            <div id="cinema-page" class="page">
+                <div class="controls-section">
+                    <h2>Digital Cinema</h2>
+                    <p>Controls for this source will be added later.</p>
+                    <button class="back-button" data-page="home-page">Back to Home</button>
+                </div>
+            </div>
+
+            <!-- Lighting Page -->
+            <div id="lighting-page" class="page">
+                <div class="controls-section">
+                    <h2>Lighting Controls</h2>
+
+                    <div class="slider-controls">
+                        <div class="slider-group">
+                            <label for="downlights-slider">Downlights</label>
+                            <input type="range" id="downlights-slider" class="level-slider" min="0" max="100" value="50">
+                            <span class="slider-percentage" id="downlights-percentage">50%</span>
+                        </div>
+                        <div class="slider-group">
+                            <label for="sconces-slider">Sconces</label>
+                            <input type="range" id="sconces-slider" class="level-slider" min="0" max="100" value="50">
+                            <span class="slider-percentage" id="sconces-percentage">50%</span>
+                        </div>
+                        <div class="slider-group">
+                            <label for="steps-slider">Steps</label>
+                            <input type="range" id="steps-slider" class="level-slider" min="0" max="100" value="50">
+                            <span class="slider-percentage" id="steps-percentage">50%</span>
+                        </div>
+                    </div>
+
+                    <div class="preset-controls">
+                        <button class="preset-button" id="preset-high">High</button>
+                        <button class="preset-button" id="preset-preview">Preview</button>
+                        <button class="preset-button" id="preset-movie">Movie</button>
+                        <button class="preset-button" id="preset-off">Off</button>
+                    </div>
+
+                    <div class="control-group-separator"></div>
+                    <button class="back-button" data-page="home-page">Back to Home</button>
+                </div>
+            </div>
+
+            <!-- Masking Page -->
+            <div id="masking-page" class="page">
+                <div class="controls-section">
+                    <h2>Screen Masking</h2>
+
+                    <div class="masking-options">
+                         <button class="masking-button" id="masking-scope">
+                            <svg viewBox="0 0 100 42.5"> <!-- Approx 2.35:1 -->
+                              <rect class="screen-bg" x="0" y="0" width="100" height="42.5" />
+                            </svg>
+                            <span>Scope (2.35)</span>
+                        </button>
+                         <button class="masking-button" id="masking-flat">
+                             <svg viewBox="0 0 100 56.25"> <!-- 16:9 Base -->
+                               <rect class="screen-bg" x="11.7" y="0" width="76.6" height="56.25" /> <!-- Approx 1.77 within 16:9 -->
+                               <rect class="mask" x="0" y="0" width="11.7" height="56.25" />
+                               <rect class="mask" x="88.3" y="0" width="11.7" height="56.25" />
+                             </svg>
+                             <span>Flat (1.77)</span>
+                        </button>
+                    </div>
+
+                    <div class="control-group-separator"></div>
+                    <button class="back-button" data-page="home-page">Back to Home</button>
+                </div>
+            </div>
+
+        </main>
+
+        <!-- Bottom Bar -->
+        <footer class="bottom-bar">
+            <!-- Lighting Nav Button -->
+            <div class="control-group nav-group">
+                 <button class="icon-button nav-button" id="nav-lighting-button" data-page="lighting-page">
+                     <i class="fas fa-lightbulb"></i>
+                 </button>
+            </div>
+            <div class="control-group volume-controls">
+                <button class="icon-button vol-down"><i class="fas fa-volume-down"></i></button>
+                <div class="volume-status">
+                    <span class="vol-label">Volume</span>
+                    <span id="volume-level" class="vol-db">- --.- dB</span>
+                </div>
+                <button class="icon-button vol-up"><i class="fas fa-volume-up"></i></button>
+                <button id="mute-button" class="icon-button mute-btn"><i class="fas fa-volume-mute"></i></button>
+            </div>
+             <!-- Masking Nav Button -->
+            <div class="control-group nav-group">
+                 <button class="icon-button nav-button" id="nav-masking-button" data-page="masking-page">
+                     <i class="fas fa-arrows-alt-h"></i>
+                 </button>
+            </div>
+        </footer>
+
+    </div> <!-- /panel-container -->
+
+    <!-- Power Off Confirmation Popup -->
+    <div id="power-popup" class="popup">
+        <div class="popup-content">
+            <h2>System Power</h2>
+            <p>Are you sure you want to shut down the system?</p>
+            <div class="popup-buttons">
+                <button id="power-confirm-yes" class="popup-button yes">Yes</button>
+                <button id="power-confirm-no" class="popup-button no">No</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Link to JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
