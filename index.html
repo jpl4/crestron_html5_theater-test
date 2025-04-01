@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Theater Control</title>
-    <!-- Link to our stylesheet -->
     <link rel="stylesheet" href="style.css">
-    <!-- Link to Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -16,7 +14,6 @@
         <header class="top-bar">
             <div id="time-display" class="time">--:-- --</div>
             <div class="spacer"></div>
-            <!-- Power button - shown on source pages -->
             <button id="power-button" class="icon-button power-btn" style="display: none;">
                 <i class="fas fa-power-off"></i>
             </button>
@@ -46,6 +43,7 @@
             <div id="appletv-page" class="page">
                  <div class="controls-section">
                     <h2>Apple TV</h2>
+                    <!-- ... (Apple TV controls remain the same) ... -->
                     <div class="menu-controls">
                         <button class="icon-button" id="atv-menu"><i class="fas fa-bars"></i></button>
                          <button class="icon-button" id="atv-tv-home"><i class="fas fa-tv"></i></button>
@@ -71,7 +69,8 @@
             <div id="bluray-page" class="page">
                   <div class="controls-section">
                     <h2>Blu-ray</h2>
-                    <div class="menu-controls">
+                     <!-- ... (Blu-ray controls remain the same) ... -->
+                     <div class="menu-controls">
                         <button class="icon-button" id="bd-top-menu">Top Menu</button>
                         <button class="icon-button" id="bd-popup-menu"><i class="fas fa-layer-group"></i></button>
                          <button class="icon-button" id="bd-back"><i class="fas fa-arrow-left"></i></button>
@@ -112,79 +111,21 @@
                 </div>
             </div>
 
-            <!-- Lighting Page -->
-            <div id="lighting-page" class="page">
-                <div class="controls-section">
-                    <h2>Lighting Controls</h2>
-
-                    <div class="slider-controls">
-                        <div class="slider-group">
-                            <label for="downlights-slider">Downlights</label>
-                            <input type="range" id="downlights-slider" class="level-slider" min="0" max="100" value="50">
-                            <span class="slider-percentage" id="downlights-percentage">50%</span>
-                        </div>
-                        <div class="slider-group">
-                            <label for="sconces-slider">Sconces</label>
-                            <input type="range" id="sconces-slider" class="level-slider" min="0" max="100" value="50">
-                            <span class="slider-percentage" id="sconces-percentage">50%</span>
-                        </div>
-                        <div class="slider-group">
-                            <label for="steps-slider">Steps</label>
-                            <input type="range" id="steps-slider" class="level-slider" min="0" max="100" value="50">
-                            <span class="slider-percentage" id="steps-percentage">50%</span>
-                        </div>
-                    </div>
-
-                    <div class="preset-controls">
-                        <button class="preset-button" id="preset-high">High</button>
-                        <button class="preset-button" id="preset-preview">Preview</button>
-                        <button class="preset-button" id="preset-movie">Movie</button>
-                        <button class="preset-button" id="preset-off">Off</button>
-                    </div>
-
-                    <div class="control-group-separator"></div>
-                    <button class="back-button" data-page="home-page">Back to Home</button>
-                </div>
-            </div>
-
-            <!-- Masking Page -->
-            <div id="masking-page" class="page">
-                <div class="controls-section">
-                    <h2>Screen Masking</h2>
-
-                    <div class="masking-options">
-                         <button class="masking-button" id="masking-scope">
-                            <svg viewBox="0 0 100 42.5"> <!-- Approx 2.35:1 -->
-                              <rect class="screen-bg" x="0" y="0" width="100" height="42.5" />
-                            </svg>
-                            <span>Scope (2.35)</span>
-                        </button>
-                         <button class="masking-button" id="masking-flat">
-                             <svg viewBox="0 0 100 56.25"> <!-- 16:9 Base -->
-                               <rect class="screen-bg" x="11.7" y="0" width="76.6" height="56.25" /> <!-- Approx 1.77 within 16:9 -->
-                               <rect class="mask" x="0" y="0" width="11.7" height="56.25" />
-                               <rect class="mask" x="88.3" y="0" width="11.7" height="56.25" />
-                             </svg>
-                             <span>Flat (1.77)</span>
-                        </button>
-                    </div>
-
-                    <div class="control-group-separator"></div>
-                    <button class="back-button" data-page="home-page">Back to Home</button>
-                </div>
-            </div>
+            <!-- *** REMOVED Lighting Page div *** -->
+            <!-- *** REMOVED Masking Page div *** -->
 
         </main>
 
         <!-- Bottom Bar -->
         <footer class="bottom-bar">
-            <!-- Lighting Nav Button -->
+            <!-- Lighting Nav Button - REMOVED data-page -->
             <div class="control-group nav-group">
-                 <button class="icon-button nav-button" id="nav-lighting-button" data-page="lighting-page">
+                 <button class="icon-button nav-button" id="nav-lighting-button">
                      <i class="fas fa-lightbulb"></i>
                  </button>
             </div>
             <div class="control-group volume-controls">
+                 <!-- ... Volume controls ... -->
                 <button class="icon-button vol-down"><i class="fas fa-volume-down"></i></button>
                 <div class="volume-status">
                     <span class="vol-label">Volume</span>
@@ -193,9 +134,9 @@
                 <button class="icon-button vol-up"><i class="fas fa-volume-up"></i></button>
                 <button id="mute-button" class="icon-button mute-btn"><i class="fas fa-volume-mute"></i></button>
             </div>
-             <!-- Masking Nav Button -->
+             <!-- Masking Nav Button - REMOVED data-page -->
             <div class="control-group nav-group">
-                 <button class="icon-button nav-button" id="nav-masking-button" data-page="masking-page">
+                 <button class="icon-button nav-button" id="nav-masking-button">
                      <i class="fas fa-arrows-alt-h"></i>
                  </button>
             </div>
@@ -206,6 +147,7 @@
     <!-- Power Off Confirmation Popup -->
     <div id="power-popup" class="popup">
         <div class="popup-content">
+            <button class="popup-close-button" id="power-popup-close"><i class="fas fa-times"></i></button>
             <h2>System Power</h2>
             <p>Are you sure you want to shut down the system?</p>
             <div class="popup-buttons">
@@ -215,7 +157,72 @@
         </div>
     </div>
 
-    <!-- Link to JavaScript -->
+    <!-- *** NEW: Lighting Popup *** -->
+    <div id="lighting-popup" class="popup">
+        <div class="popup-content lighting-popup-content">
+             <button class="popup-close-button" id="lighting-popup-close"><i class="fas fa-times"></i></button>
+             <h2>Lighting Controls</h2>
+             <div class="lighting-popup-body">
+                 <div class="lighting-sliders-container">
+                     <div class="slider-group vertical">
+                         <label for="downlights-slider">Downlights</label>
+                         <div class="slider-wrapper">
+                            <input type="range" id="downlights-slider" class="level-slider vertical" min="0" max="100" value="50" step="1">
+                         </div>
+                         <span class="slider-percentage" id="downlights-percentage">50%</span>
+                     </div>
+                     <div class="slider-group vertical">
+                         <label for="sconces-slider">Sconces</label>
+                          <div class="slider-wrapper">
+                            <input type="range" id="sconces-slider" class="level-slider vertical" min="0" max="100" value="50" step="1">
+                          </div>
+                         <span class="slider-percentage" id="sconces-percentage">50%</span>
+                     </div>
+                     <div class="slider-group vertical">
+                         <label for="steps-slider">Steps</label>
+                          <div class="slider-wrapper">
+                            <input type="range" id="steps-slider" class="level-slider vertical" min="0" max="100" value="50" step="1">
+                          </div>
+                         <span class="slider-percentage" id="steps-percentage">50%</span>
+                     </div>
+                 </div>
+                 <div class="lighting-presets-container">
+                     <button class="preset-button" id="preset-high">High</button>
+                     <button class="preset-button" id="preset-preview">Preview</button>
+                     <button class="preset-button" id="preset-movie">Movie</button>
+                     <button class="preset-button" id="preset-off">Off</button>
+                 </div>
+             </div>
+        </div>
+    </div>
+
+    <!-- *** NEW: Masking Popup *** -->
+     <div id="masking-popup" class="popup">
+        <div class="popup-content masking-popup-content">
+             <button class="popup-close-button" id="masking-popup-close"><i class="fas fa-times"></i></button>
+             <h2>Screen Masking</h2>
+             <div class="masking-options">
+                  <button class="masking-button" id="masking-scope">
+                       <!-- UPDATED SVG ViewBox -->
+                       <svg viewBox="0 0 100 42.5">
+                           <rect class="screen-bg" x="0" y="0" width="100" height="42.5" />
+                       </svg>
+                       <span>Scope (2.35)</span>
+                   </button>
+                  <button class="masking-button" id="masking-flat">
+                       <!-- UPDATED SVG ViewBox and rect positioning -->
+                       <svg viewBox="0 0 100 42.5">
+                           <rect class="mask" x="0" y="0" width="12.4" height="42.5" /> <!-- Left Mask -->
+                           <rect class="screen-bg" x="12.4" y="0" width="75.2" height="42.5" /> <!-- 1.77 Screen -->
+                           <rect class="mask" x="87.6" y="0" width="12.4" height="42.5" /> <!-- Right Mask -->
+                       </svg>
+                       <span>Flat (1.77)</span>
+                   </button>
+             </div>
+             <!-- Removed separator and back button -->
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
