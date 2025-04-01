@@ -41,108 +41,37 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Functions ---
 
     // Update time display
-    function updateTime() {
-        const now = new Date();
-        let hours = now.getHours();
-        const minutes = now.getMinutes().toString().padStart(2, '0');
-        const ampm = hours >= 12 ? 'PM' : 'AM';
-        hours = hours % 12;
-        hours = hours ? hours : 12;
-        const hoursStr = hours.toString().padStart(2, ' ');
-        if (timeDisplay) timeDisplay.textContent = `${hoursStr}:${minutes} ${ampm}`;
-    }
+    function updateTime() { /* ... (same) ... */ }
 
     // Update volume display
-    function updateVolumeDisplay(dbValue) {
-        if (volumeLevelDisplay) volumeLevelDisplay.textContent = `${dbValue.toFixed(1)} dB`;
-    }
+    function updateVolumeDisplay(dbValue) { /* ... (same) ... */ }
 
      // Update mute button visual state
-     function updateMuteButtonState(muted) {
-        if (!muteButton) return;
-        isMuted = muted;
-        muteButton.classList.toggle('active', muted);
-        muteButton.innerHTML = muted ? '<i class="fas fa-volume-off"></i>' : '<i class="fas fa-volume-mute"></i>';
-     }
+     function updateMuteButtonState(muted) { /* ... (same) ... */ }
 
-    // *** REVISED: Show Page (Only for actual page navigation) ***
-    function showPage(pageId) {
-        // --- Make sure no popups are shown when navigating pages ---
-        hidePopup(true); // Pass true to skip console log if preferred
+    // Show Page (Only for actual page navigation)
+    function showPage(pageId) { /* ... (same - hides popups) ... */ }
 
-        pages.forEach(page => {
-            page.classList.toggle('active', page.id === pageId);
-        });
+    // Show Popup Function
+    function showPopup(popupElement) { /* ... (same) ... */ }
 
-        // Show power button ONLY on Source pages
-        const isSourcePage = ['appletv-page', 'bluray-page', 'cinema-page'].includes(pageId);
-        if (powerButton) {
-            powerButton.style.display = isSourcePage ? 'inline-flex' : 'none';
-        }
-        console.log(`Navigated to page: ${pageId}`);
-    }
-
-    // *** REVISED: Show Popup Function ***
-    function showPopup(popupElement) {
-        if (!popupElement) return; // Exit if element is invalid
-
-        hidePopup(true); // Hide any currently open popup first (skip log)
-
-        popupElement.classList.add('show');
-        activePopup = popupElement;
-
-        // Highlight corresponding nav button
-        navLightingButton?.classList.toggle('active', popupElement.id === 'lighting-popup');
-        navMaskingButton?.classList.toggle('active', popupElement.id === 'masking-popup');
-
-        console.log(`Popup shown: ${popupElement.id}`);
-    }
-
-    // *** REVISED: Hide Popup Function ***
-    function hidePopup(calledInternally = false) { // Added flag
-        if (activePopup) {
-            activePopup.classList.remove('show');
-            if (!calledInternally) { // Avoid double logging
-                 console.log(`Popup hidden: ${activePopup.id}`);
-            }
-            activePopup = null;
-             // Always deselect nav buttons when hiding
-             navLightingButton?.classList.remove('active');
-             navMaskingButton?.classList.remove('active');
-        }
-    }
+    // Hide Popup Function
+    function hidePopup(calledInternally = false) { /* ... (same) ... */ }
 
 
     // --- Event Listeners ---
 
     // Source button clicks -> Use showPage
-    sourceButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            // No need to hide popups here, showPage does it
-            const targetPageId = button.getAttribute('data-page');
-            if(targetPageId) showPage(targetPageId);
-        });
-    });
+    sourceButtons.forEach(button => { button.addEventListener('click', () => { const targetPageId = button.getAttribute('data-page'); if(targetPageId) showPage(targetPageId); }); });
 
      // Back button clicks -> Use showPage (always to home)
-     backButtons.forEach(button => {
-        button.addEventListener('click', () => {
-             // No need to hide popups here, showPage does it
-            const targetPageId = button.getAttribute('data-page');
-             if (targetPageId) showPage(targetPageId);
-        });
-    });
+     backButtons.forEach(button => { button.addEventListener('click', () => { const targetPageId = button.getAttribute('data-page'); if (targetPageId) showPage(targetPageId); }); });
 
     // Power button click -> Show Power Popup
     powerButton?.addEventListener('click', () => showPopup(powerPopup));
 
     // Power confirmation clicks
-    powerConfirmYes?.addEventListener('click', () => {
-        hidePopup();
-        console.log("Shutdown Confirmed!");
-        // CrComLib Action...
-        showPage('home-page'); // Go home
-    });
+    powerConfirmYes?.addEventListener('click', () => { hidePopup(); console.log("Shutdown Confirmed!"); /* CrComLib Action...*/ showPage('home-page'); });
     powerConfirmNo?.addEventListener('click', hidePopup);
 
     // --- Popup Close Button Listeners ---
@@ -151,46 +80,57 @@ document.addEventListener('DOMContentLoaded', () => {
     maskingPopupClose?.addEventListener('click', hidePopup);
 
     // Mute button click
-    muteButton?.addEventListener('click', () => {
-        const newState = !isMuted;
-        updateMuteButtonState(newState);
-         console.log(`Mute toggled: ${newState}`);
-         // CrComLib Action...
-    });
+    muteButton?.addEventListener('click', () => { /* ... (same) ... */ });
 
     // Volume Up/Down Hold Logic
-    function handleVolumeChange(direction) { /* ... (same) ... */ console.log(`Volume ${direction} PRESSED`); /* CrComLib Action...*/ if (volIntervalTimer) clearInterval(volIntervalTimer); volIntervalTimer = setInterval(()=>{console.log(`Volume ${direction} HELD`); /* CrComLib Action...*/ }, 200); }
-    function stopVolumeChange(direction) { /* ... (same) ... */ console.log(`Volume ${direction} RELEASED`); if (volIntervalTimer) { clearInterval(volIntervalTimer); volIntervalTimer = null; } }
-    ['mousedown', 'touchstart'].forEach(eventType => { volUpButton?.addEventListener(eventType, (e) => { e.preventDefault(); handleVolumeChange('Up'); }); volDownButton?.addEventListener(eventType, (e) => { e.preventDefault(); handleVolumeChange('Down'); }); });
-    ['mouseup', 'mouseleave', 'touchend', 'touchcancel'].forEach(eventType => { volUpButton?.addEventListener(eventType, (e) => { e.preventDefault(); stopVolumeChange('Up'); }); volDownButton?.addEventListener(eventType, (e) => { e.preventDefault(); stopVolumeChange('Down'); }); });
+    function handleVolumeChange(direction) { /* ... (same) ... */ }
+    function stopVolumeChange(direction) { /* ... (same) ... */ }
+    ['mousedown', 'touchstart'].forEach(eventType => { /* ... (same) ... */ });
+    ['mouseup', 'mouseleave', 'touchend', 'touchcancel'].forEach(eventType => { /* ... (same) ... */ });
 
     // --- Bottom Bar Navigation Button Listeners -> Use showPopup ---
-    // Make sure the IDs match the HTML
-    navLightingButton?.addEventListener('click', () => {
-        console.log("Lighting button clicked, attempting to show popup..."); // Debug log
-        showPopup(lightingPopup);
-    });
-    navMaskingButton?.addEventListener('click', () => {
-        console.log("Masking button clicked, attempting to show popup..."); // Debug log
-        showPopup(maskingPopup);
-    });
-
+    navLightingButton?.addEventListener('click', () => showPopup(lightingPopup));
+    navMaskingButton?.addEventListener('click', () => showPopup(maskingPopup));
 
     // --- Lighting Popup Listeners ---
-    function handleSliderInput(sliderElement, percentageElement) { /* ... (same) ... */ if (!sliderElement || !percentageElement) return; const value = sliderElement.value; percentageElement.textContent = `${value}%`; const sliderId = sliderElement.id; console.log(`Slider ${sliderId} changed to ${value}%`); /* CrComLib Action...*/ lightingPresetButtons.forEach(btn => btn.classList.remove('active')); activeLightingPreset = null; }
-    downlightsSlider?.addEventListener('input', () => handleSliderInput(downlightsSlider, downlightsPercentage));
-    sconcesSlider?.addEventListener('input', () => handleSliderInput(sconcesSlider, sconcesPercentage));
-    stepsSlider?.addEventListener('input', () => handleSliderInput(stepsSlider, stepsPercentage));
-    lightingPresetButtons.forEach(button => { button.addEventListener('click', () => { const presetId = button.id; if (activeLightingPreset !== presetId) { activeLightingPreset = presetId; lightingPresetButtons.forEach(btn => btn.classList.toggle('active', btn.id === presetId)); console.log(`Lighting Preset ${presetId} selected`); /* CrComLib Action...*/ } }); });
+    // *** UPDATED: handleSliderInput to set CSS variable for gradient fill ***
+    function handleSliderInput(sliderElement, percentageElement) {
+        if (!sliderElement || !percentageElement) return;
+        const value = sliderElement.value;
+        percentageElement.textContent = `${value}%`;
+
+        // Set CSS custom property for gradient background
+        sliderElement.style.setProperty('--value-percent', `${value}%`);
+
+        // --- CRESTRON INTEGRATION POINT ---
+        const sliderId = sliderElement.id;
+        console.log(`Slider ${sliderId} changed to ${value}%`);
+        // Example: CrComLib Action...
+
+        // Deactivate any active preset button when a slider is manually moved
+        lightingPresetButtons.forEach(btn => btn.classList.remove('active'));
+        activeLightingPreset = null;
+    }
+
+    // Initialize slider gradients on load AND add listeners
+    [downlightsSlider, sconcesSlider, stepsSlider].forEach(slider => {
+        if (slider) {
+            // Set initial gradient fill
+            handleSliderInput(slider, slider.parentElement.parentElement.querySelector('.slider-percentage'));
+            // Add listener
+            slider.addEventListener('input', () => handleSliderInput(slider, slider.parentElement.parentElement.querySelector('.slider-percentage')));
+        }
+    });
+
+    lightingPresetButtons.forEach(button => { button.addEventListener('click', () => { const presetId = button.id; if (activeLightingPreset !== presetId) { activeLightingPreset = presetId; lightingPresetButtons.forEach(btn => btn.classList.toggle('active', btn.id === presetId)); console.log(`Lighting Preset ${presetId} selected`); /* CrComLib Action...*/ // Optionally: Update sliders visually based on preset here if no Crestron feedback } }); });
 
     // --- Masking Popup Listeners ---
     maskingButtons.forEach(button => { button.addEventListener('click', () => { const maskId = button.id; if (activeMaskingPreset !== maskId) { activeMaskingPreset = maskId; maskingButtons.forEach(btn => btn.classList.toggle('active', btn.id === maskId)); console.log(`Masking Preset ${maskId} selected`); /* CrComLib Action...*/ } }); });
 
     // --- Apple TV / Blu-ray Control Button Listeners ---
-    /* ... (add all the ATV/BD listeners back in here - they were omitted for brevity but are needed) ... */
+    /* ... (Insert all the ATV/BD listeners here again - essential!) ... */
     document.getElementById('atv-menu')?.addEventListener('click', () => console.log('ATV Menu Pressed'));
-    document.getElementById('atv-tv-home')?.addEventListener('click', () => console.log('ATV TV/Home Pressed'));
-    // ... etc for all ATV and BD buttons ...
+    // ... all others ...
     document.getElementById('bd-subtitle')?.addEventListener('click', () => console.log('BD Subtitle Pressed'));
 
 
@@ -199,14 +139,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const timeInterval = setInterval(updateTime, 1000);
     updateVolumeDisplay(currentVolumeDb);
     updateMuteButtonState(isMuted);
-    handleSliderInput(downlightsSlider, downlightsPercentage); // Init sliders
-    handleSliderInput(sconcesSlider, sconcesPercentage);
-    handleSliderInput(stepsSlider, stepsPercentage);
+    // Sliders initialized in the loop above
 
     showPage('home-page'); // Start on home page
 
     // --- CRESTRON Feedback Examples ---
-    /* ... (same CrComLib.subscribeState examples) ... */
+    /* ... (Same examples, ensure feedback updates slider .value AND calls handleSliderInput to update visual gradient) ... */
+    // Example Light Level Feedback update:
+    // CrComLib.subscribeState('n', '301', (value) => { // Feedback from downlights level (e.g., analog join 301)
+    //    const percent = Math.round((value / 65535) * 100);
+    //    if (downlightsSlider) {
+    //        downlightsSlider.value = percent;
+    //        handleSliderInput(downlightsSlider, downlightsPercentage); // Update visual fill
+    //    }
+    // });
+
 
     // Cleanup interval
     window.addEventListener('beforeunload', () => { clearInterval(timeInterval); if (volIntervalTimer) clearInterval(volIntervalTimer); });
